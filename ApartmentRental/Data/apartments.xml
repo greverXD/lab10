@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<apartments>
+  <region name="Москва">
+    <apartment id="1" views="14">
+      <address>ул. Профсоюзная, д. 56, кв. 112</address>
+      <rooms>2</rooms>
+      <area>54.5</area>
+      <floor>7</floor>
+      <totalFloors>12</totalFloors>
+      <price>75000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Иванов Сергей Петрович</name>
+        <phone>+79001112233</phone>
+      </owner>
+      <description>Свежий ремонт, 5 минут до метро, есть посудомоечная машина.</description>
+      <published>2026-10-02</published>
+    </apartment>
+    <apartment id="2" views="6">
+      <address>Ленинградский пр-т, д. 12, кв. 8</address>
+      <rooms>1</rooms>
+      <area>36</area>
+      <floor>2</floor>
+      <totalFloors>5</totalFloors>
+      <price>52000</price>
+      <furniture>true</furniture>
+      <pets>true</pets>
+      <owner>
+        <name>Смирнова Анна Викторовна</name>
+        <phone>+79002223344</phone>
+      </owner>
+      <description>Уютная квартира в тихом дворе, можно с кошкой.</description>
+      <published>2026-10-15</published>
+    </apartment>
+    <apartment id="3" views="21">
+      <address>ул. Мосфильмовская, д. 70, кв. 301</address>
+      <rooms>3</rooms>
+      <area>98.3</area>
+      <floor>15</floor>
+      <totalFloors>25</totalFloors>
+      <price>140000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Кузнецов Алексей Игоревич</name>
+        <phone>+79003334455</phone>
+      </owner>
+      <description>Видовая квартира, подземный паркинг, консьерж.</description>
+      <published>2026-09-20</published>
+    </apartment>
+    <apartment id="4" views="3">
+      <address>ул. Бутлерова, д. 4, кв. 45</address>
+      <rooms>1</rooms>
+      <area>32.1</area>
+      <floor>1</floor>
+      <totalFloors>9</totalFloors>
+      <price>43000</price>
+      <furniture>false</furniture>
+      <pets>true</pets>
+      <owner>
+        <name>Иванов Сергей Петрович</name>
+        <phone>+79001112233</phone>
+      </owner>
+      <description>Без мебели, рядом парк и школа.</description>
+      <published>2026-11-10</published>
+    </apartment>
+  </region>
+  <region name="Санкт-Петербург">
+    <apartment id="5" views="11">
+      <address>Невский пр-т, д. 88, кв. 17</address>
+      <rooms>2</rooms>
+      <area>61</area>
+      <floor>4</floor>
+      <totalFloors>5</totalFloors>
+      <price>68000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Попова Мария Андреевна</name>
+        <phone>+79004445566</phone>
+      </owner>
+      <description>Исторический центр, высокие потолки, окна во двор.</description>
+      <published>2026-10-05</published>
+    </apartment>
+    <apartment id="6" views="4">
+      <address>ул. Савушкина, д. 125, кв. 230</address>
+      <rooms>1</rooms>
+      <area>38.7</area>
+      <floor>11</floor>
+      <totalFloors>16</totalFloors>
+      <price>39000</price>
+      <furniture>true</furniture>
+      <pets>true</pets>
+      <owner>
+        <name>Волков Дмитрий Олегович</name>
+        <phone>+79005556677</phone>
+      </owner>
+      <description>Новый дом, вид на залив, можно с животными.</description>
+      <published>2026-11-01</published>
+    </apartment>
+    <apartment id="7" views="8">
+      <address>Московский пр-т, д. 190, кв. 54</address>
+      <rooms>3</rooms>
+      <area>82</area>
+      <floor>6</floor>
+      <totalFloors>6</totalFloors>
+      <price>85000</price>
+      <furniture>false</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Попова Мария Андреевна</name>
+        <phone>+79004445566</phone>
+      </owner>
+      <description>Последний этаж, большая кухня, подходит для семьи.</description>
+      <published>2026-09-28</published>
+    </apartment>
+  </region>
+  <region name="Казань">
+    <apartment id="8" views="5">
+      <address>ул. Баумана, д. 19, кв. 6</address>
+      <rooms>2</rooms>
+      <area>50</area>
+      <floor>3</floor>
+      <totalFloors>5</totalFloors>
+      <price>38000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Хайруллин Ринат Маратович</name>
+        <phone>+79006667788</phone>
+      </owner>
+      <description>Пешеходная улица в двух минутах, рядом Кремль.</description>
+      <published>2026-10-18</published>
+    </apartment>
+    <apartment id="9" views="3">
+      <address>пр-т Победы, д. 100, кв. 77</address>
+      <rooms>1</rooms>
+      <area>34.5</area>
+      <floor>8</floor>
+      <totalFloors>10</totalFloors>
+      <price>26000</price>
+      <furniture>true</furniture>
+      <pets>true</pets>
+      <owner>
+        <name>Галиева Алсу Рустемовна</name>
+        <phone>+79007778899</phone>
+      </owner>
+      <description>Недорогая квартира у метро, можно с собакой.</description>
+      <published>2026-11-12</published>
+    </apartment>
+    <apartment id="10" views="7">
+      <address>ул. Чистопольская, д. 61, кв. 140</address>
+      <rooms>4</rooms>
+      <area>120</area>
+      <floor>9</floor>
+      <totalFloors>18</totalFloors>
+      <price>72000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Хайруллин Ринат Маратович</name>
+        <phone>+79006667788</phone>
+      </owner>
+      <description>Две ванные, гардеробная, вид на Волгу.</description>
+      <published>2026-10-25</published>
+    </apartment>
+  </region>
+  <region name="Новосибирск">
+    <apartment id="11" views="9">
+      <address>Красный пр-т, д. 25, кв. 31</address>
+      <rooms>2</rooms>
+      <area>47.2</area>
+      <floor>5</floor>
+      <totalFloors>9</totalFloors>
+      <price>33000</price>
+      <furniture>true</furniture>
+      <pets>false</pets>
+      <owner>
+        <name>Морозов Павел Николаевич</name>
+        <phone>+79008889900</phone>
+      </owner>
+      <description>Центр города, рядом метро и торговый центр.</description>
+      <published>2026-10-08</published>
+    </apartment>
+    <apartment id="12" views="1">
+      <address>ул. Иванова, д. 7, кв. 12</address>
+      <rooms>1</rooms>
+      <area>29</area>
+      <floor>1</floor>
+      <totalFloors>5</totalFloors>
+      <price>21000</price>
+      <furniture>false</furniture>
+      <pets>true</pets>
+      <owner>
+        <name>Морозов Павел Николаевич</name>
+        <phone>+79008889900</phone>
+      </owner>
+      <description>Академгородок, рядом университет, подойдёт студенту.</description>
+      <published>2026-11-18</published>
+    </apartment>
+  </region>
+</apartments>

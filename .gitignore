@@ -1,0 +1,13 @@
+# Результаты сборки
+bin/
+obj/
+
+# Служебные файлы IDE
+.vs/
+*.user
+*.suo
+
+# Файлы, которые создаёт программа во время работы
+ApartmentRental/Reports/
+ApartmentRental/Saved/
+*.tmp
