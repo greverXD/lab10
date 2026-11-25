@@ -7,10 +7,6 @@ using ApartmentRental.Models;
 
 namespace ApartmentRental.Services
 {
-    /// <summary>
-    /// Отчёты по коллекции квартир. Данные выбираются и группируются
-    /// операторами LINQ to Objects и записываются в текстовые файлы.
-    /// </summary>
     public class ReportService
     {
         private readonly string _folder;
@@ -22,7 +18,6 @@ namespace ApartmentRental.Services
 
         public string Folder => _folder;
 
-        /// <summary>Сводка по регионам: количество, цены, просмотры.</summary>
         public List<string> BuildRegionSummary(IReadOnlyCollection<Apartment> apartments)
         {
             var rows = from a in apartments
@@ -56,7 +51,6 @@ namespace ApartmentRental.Services
             return lines;
         }
 
-        /// <summary>Самые просматриваемые квартиры.</summary>
         public List<string> BuildTopViewed(IReadOnlyCollection<Apartment> apartments, int count)
         {
             var lines = new List<string>
@@ -76,7 +70,6 @@ namespace ApartmentRental.Services
             return lines;
         }
 
-        /// <summary>Каталог всех квартир, сгруппированный по регионам и отсортированный по цене.</summary>
         public List<string> BuildCatalog(IReadOnlyCollection<Apartment> apartments)
         {
             var lines = new List<string>
@@ -95,7 +88,6 @@ namespace ApartmentRental.Services
             return lines;
         }
 
-        /// <summary>Записывает строки отчёта в файл, возвращает полный путь.</summary>
         public string Save(string name, IEnumerable<string> lines)
         {
             Directory.CreateDirectory(_folder);

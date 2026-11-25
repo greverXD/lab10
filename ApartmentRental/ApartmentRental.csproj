@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
     <RootNamespace>ApartmentRental</RootNamespace>
-    <!-- Позволяет запускаться на более новой версии .NET, если 8.0 не установлена -->
+    
     <RollForward>Major</RollForward>
   </PropertyGroup>
 

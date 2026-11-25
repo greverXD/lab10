@@ -7,13 +7,9 @@ using ApartmentRental.Extensions;
 
 namespace ApartmentRental.Models
 {
-    /// <summary>
-    /// Квартира для аренды. Часть 2 из 2: константы, read-only поля, статические поля
-    /// и методы, конструктор, событие, методы экземпляра.
-    /// </summary>
+    
     public partial class Apartment
     {
-        // ---------- Константы ----------
         public const int MinRooms = 1;
         public const int MaxRooms = 10;
         public const int MaxFloor = 100;
@@ -21,19 +17,15 @@ namespace ApartmentRental.Models
         public const double MaxArea = 1000;
         private const int PhoneCompareDigits = 10;
 
-        // ---------- Статические поля ----------
-        private static int _instancesCreated;   // сколько объектов создано за сеанс
-        private static int _viewsInSession;     // сколько просмотров сделано за сеанс
+        private static int _instancesCreated;  
+        private static int _viewsInSession;  
 
-        // ---------- Read-only поля ----------
         private static readonly Regex PhoneDigitsRegex = new Regex(@"^\+?[0-9]{10,13}$");
         private static readonly Regex PhoneCharsRegex = new Regex(@"^\+?[0-9\s\-\(\)]+$");
-        private readonly List<DateTime> _sessionViews = new List<DateTime>(); // время просмотров в этом сеансе
+        private readonly List<DateTime> _sessionViews = new List<DateTime>();
 
-        // ---------- Событие (на основе делегата ApartmentEventHandler) ----------
         public event ApartmentEventHandler? Viewed;
 
-        // ---------- Конструктор ----------
         public Apartment(int id, string region, string address, double area, decimal monthlyPrice,
                          int rooms, int floor, int totalFloors, bool hasFurniture, bool petsAllowed,
                          string ownerName, string ownerPhone, string description = "",
@@ -60,7 +52,6 @@ namespace ApartmentRental.Models
             _instancesCreated++;
         }
 
-        // ---------- Статические свойства и методы ----------
         public static int InstancesCreated => _instancesCreated;
 
         public static int ViewsInSession => _viewsInSession;
@@ -74,7 +65,6 @@ namespace ApartmentRental.Models
             return PhoneCharsRegex.IsMatch(trimmed) && PhoneDigitsRegex.IsMatch(NormalizePhone(trimmed));
         }
 
-        /// <summary>Убирает пробелы, скобки и дефисы: «+7 (916) 123-45-67» → «+79161234567».</summary>
         public static string NormalizePhone(string phone)
         {
             string trimmed = phone.Trim();
@@ -82,7 +72,6 @@ namespace ApartmentRental.Models
             return trimmed.StartsWith("+") ? "+" + digits : digits;
         }
 
-        /// <summary>Сравнивает номера по последним 10 цифрам (+7916... и 8916... — один номер).</summary>
         public static bool IsSamePhone(string first, string second)
         {
             string a = NormalizePhone(first).TrimStart('+');
@@ -92,15 +81,10 @@ namespace ApartmentRental.Models
             return a[^PhoneCompareDigits..] == b[^PhoneCompareDigits..];
         }
 
-        // ---------- Свойства только для чтения ----------
         public IReadOnlyList<DateTime> SessionViews => _sessionViews;
 
-        /// <summary>Не первый и не последний этаж.</summary>
         public bool IsMiddleFloor => Floor > 1 && Floor < TotalFloors;
 
-        // ---------- Методы экземпляра ----------
-
-        /// <summary>Регистрирует просмотр квартиры клиентом и уведомляет подписчиков.</summary>
         public void RegisterView()
         {
             Views++;
@@ -109,7 +93,7 @@ namespace ApartmentRental.Models
             Viewed?.Invoke(this, $"Квартира №{Id} просмотрена. Всего просмотров: {Views}");
         }
 
-        /// <summary>Содержит ли объявление ключевое слово (без учёта регистра).</summary>
+       
         public bool Matches(string keyword)
         {
             if (string.IsNullOrWhiteSpace(keyword))

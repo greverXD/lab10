@@ -3,9 +3,6 @@ using System.Text;
 
 namespace ApartmentRental.Models
 {
-    /// <summary>
-    /// Базовый класс «Жильё»: общие данные любого объекта, который сдаётся в аренду.
-    /// </summary>
     public class Housing
     {
         private int _id;
@@ -53,11 +50,9 @@ namespace ApartmentRental.Models
             set => _monthlyPrice = value > 0 ? value : throw new ArgumentException("Цена должна быть больше нуля.");
         }
 
-        /// <summary>Метод 1 (виртуальный): краткая информация в одну строку.</summary>
         public virtual string GetShortInfo() =>
             $"№{Id} {Address}, {Area:0.#} м², {MonthlyPrice:N0} руб./мес.";
 
-        /// <summary>Метод 2 (виртуальный): полная информация.</summary>
         public virtual string GetFullInfo()
         {
             var sb = new StringBuilder();
@@ -70,7 +65,6 @@ namespace ApartmentRental.Models
             return sb.ToString();
         }
 
-        /// <summary>Метод 3: стоимость аренды за указанное число месяцев.</summary>
         public decimal CalculateRentCost(int months)
         {
             if (months <= 0)
@@ -78,12 +72,9 @@ namespace ApartmentRental.Models
             return MonthlyPrice * months;
         }
 
-        /// <summary>Метод 4: цена аренды одного квадратного метра.</summary>
         public decimal GetPricePerSquareMeter() => Math.Round(MonthlyPrice / (decimal)Area, 2);
 
         public override string ToString() => GetShortInfo();
-
-        // ----- вспомогательные методы для наследников -----
 
         protected static string RequireText(string? value, string fieldName)
         {

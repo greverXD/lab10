@@ -2,14 +2,9 @@ using System;
 
 namespace ApartmentRental.Models
 {
-    /// <summary>
-    /// Квартира для аренды. Часть 1 из 2: защищённые поля и свойства доступа к ним.
-    /// Константы, read-only и статические члены, конструктор, методы и событие —
-    /// в файле Apartment.Methods.cs.
-    /// </summary>
+    
     public partial class Apartment : Housing
     {
-        // ---------- Защищённые поля ----------
         protected int _rooms;
         protected int _floor;
         protected int _totalFloors;
@@ -21,7 +16,6 @@ namespace ApartmentRental.Models
         protected int _views;
         protected DateTime _publishedAt;
 
-        // ---------- Свойства ----------
         public int Rooms
         {
             get => _rooms;
@@ -90,7 +84,6 @@ namespace ApartmentRental.Models
             set => _description = value?.Trim() ?? "";
         }
 
-        /// <summary>Сколько раз квартиру открывали клиенты (хранится в XML).</summary>
         public int Views
         {
             get => _views;

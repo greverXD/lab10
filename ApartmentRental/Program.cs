@@ -17,12 +17,11 @@ namespace ApartmentRental
         {
             Console.OutputEncoding = Encoding.UTF8;
             if (OperatingSystem.IsWindows())
-                Console.InputEncoding = Encoding.Unicode; // корректный ввод кириллицы в консоли Windows
+                Console.InputEncoding = Encoding.Unicode;
 
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
             CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo("ru-RU");
 
-            // Папка, из которой запущена программа (при «dotnet run» — папка проекта).
             string baseFolder = Directory.GetCurrentDirectory();
             string dataPath = FindDataFile(baseFolder);
 
@@ -60,14 +59,13 @@ namespace ApartmentRental
             }
             catch (EndOfStreamException)
             {
-                // Ввод закрыт (Ctrl+Z в Windows, Ctrl+D в Linux) — просто выходим.
+               
             }
 
             Console.WriteLine("\nДо свидания!");
             return 0;
         }
 
-        /// <summary>Ищет XML сначала в папке Data рядом с проектом, затем рядом с exe.</summary>
         private static string FindDataFile(string baseFolder)
         {
             string projectData = Path.Combine(baseFolder, "Data", DataFileName);

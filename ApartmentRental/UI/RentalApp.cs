@@ -11,7 +11,6 @@ using static ApartmentRental.UI.ConsoleHelper;
 
 namespace ApartmentRental.UI
 {
-    /// <summary>Консольное меню программы: клиент, собственник, отчёты.</summary>
     public class RentalApp
     {
         private const int TopCount = 5;
@@ -54,9 +53,6 @@ namespace ApartmentRental.UI
             }
         }
 
-        // =====================================================================
-        //  Клиент
-        // =====================================================================
 
         private void ClientMenu()
         {
@@ -124,7 +120,6 @@ namespace ApartmentRental.UI
             var filters = new List<ApartmentFilter>();
             var applied = new List<string>();
 
-            // Регион
             List<string> regions = Apartments.Regions();
             for (int i = 0; i < regions.Count; i++)
                 Console.WriteLine($"  {i + 1}. {regions[i]}");
@@ -136,7 +131,6 @@ namespace ApartmentRental.UI
                 applied.Add(region);
             }
 
-            // Цена
             decimal? minPrice = ReadOptionalDecimal("Цена от, руб.: ", 0, 100_000_000);
             if (minPrice is decimal min)
             {
@@ -151,7 +145,6 @@ namespace ApartmentRental.UI
                 applied.Add($"цена до {max:N0}");
             }
 
-            // Комнаты
             int? minRooms = ReadOptionalInt("Комнат от: ", Apartment.MinRooms, Apartment.MaxRooms);
             if (minRooms is int roomsFrom)
             {
@@ -166,7 +159,6 @@ namespace ApartmentRental.UI
                 applied.Add($"комнат до {roomsTo}");
             }
 
-            // Площадь
             double? minArea = ReadOptionalDouble("Площадь от, м²: ", 0, Apartment.MaxArea);
             if (minArea is double area)
             {
@@ -174,7 +166,6 @@ namespace ApartmentRental.UI
                 applied.Add($"площадь от {area:0.#} м²");
             }
 
-            // Мебель, животные, этаж
             bool? furniture = ReadOptionalYesNo("С мебелью? (д/н): ");
             if (furniture is bool needFurniture)
             {
@@ -227,7 +218,6 @@ namespace ApartmentRental.UI
             ChooseAndView(sorted.ToList(), "ВСЕ КВАРТИРЫ");
         }
 
-        /// <summary>Показывает список квартир и даёт выбрать одну для просмотра.</summary>
         private void ChooseAndView(List<Apartment> list, string title)
         {
             while (true)
@@ -255,7 +245,6 @@ namespace ApartmentRental.UI
         {
             try
             {
-                // Событие Viewed → репозиторий сразу сохраняет новый счётчик в XML.
                 apartment.RegisterView();
             }
             catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
@@ -338,9 +327,6 @@ namespace ApartmentRental.UI
             Pause();
         }
 
-        // =====================================================================
-        //  Собственник
-        // =====================================================================
 
         private void OwnerMenu()
         {
@@ -500,9 +486,6 @@ namespace ApartmentRental.UI
             }
         }
 
-        // =====================================================================
-        //  Отчёты
-        // =====================================================================
 
         private void ReportsMenu()
         {

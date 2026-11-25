@@ -7,15 +7,10 @@ using ApartmentRental.Models;
 
 namespace ApartmentRental.Services
 {
-    /// <summary>Сохранение понравившейся квартиры в текстовый файл.</summary>
     public static class FileService
     {
         private const string InvalidPathChars = "<>\"|?*";
 
-        /// <summary>
-        /// Проверяет путь к папке, введённый пользователем, и создаёт папку.
-        /// Относительный путь считается от папки программы.
-        /// </summary>
         public static bool TryPrepareFolder(string input, string baseFolder, out string fullPath, out string error)
         {
             fullPath = "";
@@ -60,7 +55,6 @@ namespace ApartmentRental.Services
             return false;
         }
 
-        /// <summary>Записывает карточку квартиры в файл (перезапись или дозапись).</summary>
         public static void SaveApartment(Apartment apartment, string path, bool append)
         {
             string text = apartment.ToFileText();

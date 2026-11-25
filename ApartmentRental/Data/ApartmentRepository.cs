@@ -8,11 +8,6 @@ using ApartmentRental.Models;
 
 namespace ApartmentRental.Data
 {
-    /// <summary>
-    /// Хранилище квартир в XML-файле. Чтение, добавление, изменение и удаление
-    /// выполняются средствами LINQ to XML.
-    /// Структура файла: apartments → region (name) → apartment (id, views).
-    /// </summary>
     public class ApartmentRepository
     {
         private readonly string _filePath;
@@ -28,15 +23,10 @@ namespace ApartmentRental.Data
         public string FilePath => _filePath;
 
         public IReadOnlyList<Apartment> Apartments => _apartments;
-
-        /// <summary>Записи XML, которые не удалось прочитать.</summary>
         public IReadOnlyList<string> LoadWarnings => _loadWarnings;
 
         public int NextId => _apartments.Count == 0 ? 1 : _apartments.Max(a => a.Id) + 1;
 
-        // =====================================================================
-        //  Чтение (LINQ to XML)
-        // =====================================================================
 
         public void Load()
         {
@@ -49,7 +39,6 @@ namespace ApartmentRental.Data
             if (root.Name != "apartments")
                 throw new InvalidDataException("Корневой элемент XML должен называться <apartments>.");
 
-            // Запрос LINQ to XML: все квартиры вместе с названием региона.
             var records = from region in root.Elements("region")
                           let regionName = (string?)region.Attribute("name")
                           from element in region.Elements("apartment")
@@ -135,11 +124,6 @@ namespace ApartmentRental.Data
         private static DateTime ParseDate(string raw) =>
             XmlConvert.ToDateTime(raw, XmlDateTimeSerializationMode.Unspecified);
 
-        // =====================================================================
-        //  Изменение данных
-        // =====================================================================
-
-        /// <summary>Добавляет объявление в нужный регион XML-файла (регион создаётся при необходимости).</summary>
         public void Add(Apartment apartment)
         {
             if (_apartments.Any(a => a.Id == apartment.Id))
@@ -159,7 +143,6 @@ namespace ApartmentRental.Data
             }
             else
             {
-                // Пишем регион так же, как он уже записан в файле («москва» → «Москва»).
                 apartment.Region = (string)regionElement.Attribute("name")!;
             }
 
@@ -172,7 +155,6 @@ namespace ApartmentRental.Data
             }
             catch
             {
-                // Откатываем изменения в документе, если файл не удалось записать.
                 if (newRegion) regionElement.Remove();
                 else element.Remove();
                 throw;
@@ -181,7 +163,6 @@ namespace ApartmentRental.Data
             Attach(apartment);
         }
 
-        /// <summary>Удаляет объявление (и пустой регион) из XML-файла.</summary>
         public void Remove(Apartment apartment)
         {
             XElement? element = FindElement(apartment.Id);
@@ -197,7 +178,6 @@ namespace ApartmentRental.Data
             _apartments.Remove(apartment);
         }
 
-        // Подписываемся на событие просмотра, чтобы сразу сохранять счётчик в XML.
         private void Attach(Apartment apartment)
         {
             apartment.Viewed += OnApartmentViewed;
@@ -237,7 +217,6 @@ namespace ApartmentRental.Data
 
         private void Save()
         {
-            // Пишем во временный файл и подменяем основной, чтобы не испортить данные при сбое.
             string tempPath = _filePath + ".tmp";
             _document.Save(tempPath);
             File.Move(tempPath, _filePath, true);
